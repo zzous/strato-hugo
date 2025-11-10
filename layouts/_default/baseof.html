@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta name="keywords" content="{{ if .Params.tags }}{{ delimit .Params.tags ", " }}{{ end }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+    {{ if .OutputFormats }}
+    {{ range .AlternativeOutputFormats }}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+    {{ end }}
+    {{ end }}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css">
 </head>
 <body>
@@ -14,6 +23,13 @@
                 <a href="{{ .Site.BaseURL }}" class="logo-link{{ if eq .RelPermalink "/" }} active{{ end }}">
                     <img src="{{ .Site.BaseURL }}images/logo.png" alt="{{ .Site.Title }}" class="site-logo">
                 </a>
+            </div>
+            <div class="sidebar-search">
+                <div class="search-box">
+                    <i class="mdi mdi-magnify"></i>
+                    <input type="text" id="search-input" placeholder="검색..." autocomplete="off">
+                    <div id="search-results" class="search-results"></div>
+                </div>
             </div>
             {{ $currentPage := . }}
             {{ $currentRelPermalink := $currentPage.RelPermalink }}
@@ -43,6 +59,7 @@
                         <a href="{{ .Site.BaseURL }}posts/first-post/" class="nav-item nav-sub-item{{ if or (eq $currentRelPermalink "/posts/first-post/") (eq $currentPathNoSlash "/posts/first-post") (eq $currentFileBaseName "first-post") }} active{{ end }}">첫 번째 블로그 포스트</a>
                         <a href="{{ .Site.BaseURL }}posts/getting-started/" class="nav-item nav-sub-item{{ if or (eq $currentRelPermalink "/posts/getting-started/") (eq $currentPathNoSlash "/posts/getting-started") (eq $currentFileBaseName "getting-started") }} active{{ end }}">Hugo 시작하기</a>
                         <a href="{{ .Site.BaseURL }}posts/hugo-tips/" class="nav-item nav-sub-item{{ if or (eq $currentRelPermalink "/posts/hugo-tips/") (eq $currentPathNoSlash "/posts/hugo-tips") (eq $currentFileBaseName "hugo-tips") }} active{{ end }}">Hugo 사용 팁</a>
+                        <a href="{{ .Site.BaseURL }}posts/git-branch-strategy/" class="nav-item nav-sub-item{{ if or (eq $currentRelPermalink "/posts/git-branch-strategy/") (eq $currentPathNoSlash "/posts/git-branch-strategy") (eq $currentFileBaseName "git-branch-strategy") }} active{{ end }}">Git Branch 전략</a>
                     </div>
                 </div>
             </nav>
@@ -54,6 +71,19 @@
             {{ block "main" . }}{{ end }}
         </main>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script>
+        // Prism autoloader 설정 - copy 플러그인 제외
+        window.Prism = window.Prism || {};
+        window.Prism.plugins = window.Prism.plugins || {};
+        window.Prism.plugins.autoloader = {
+            languages_path: 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/',
+            use_minified: true,
+            ignore: ['copy-to-clipboard'] // copy 플러그인 제외
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="{{ .Site.BaseURL }}js/main.js"></script>
 </body>
 </html>
 

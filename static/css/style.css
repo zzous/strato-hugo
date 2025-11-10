@@ -44,7 +44,85 @@ body {
 }
 
 .sidebar-header {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+}
+
+/* 사이드바 검색 */
+.sidebar-search {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    pointer-events: none;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 12px 10px 40px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.9em;
+    transition: all 0.2s;
+    background: white;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.1);
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.search-result-item {
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover {
+    background-color: #f8f9fa;
+}
+
+.search-result-title {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.search-result-type {
+    font-size: 0.8em;
+    color: var(--text-light);
 }
 
 .logo-link {
@@ -423,9 +501,26 @@ article time {
     color: var(--text-light);
 }
 
+.post-meta-single .reading-time {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.post-meta-single .reading-time i {
+    font-size: 16px;
+}
+
 .post-date-single {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     color: var(--text-light);
     font-weight: 500;
+}
+
+.post-date-single i {
+    font-size: 16px;
 }
 
 .post-content {
@@ -434,13 +529,22 @@ article time {
     color: var(--text-color);
 }
 
+.post-content h1 {
+    font-size: 2.2em !important;
+    font-weight: 700 !important;
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+    padding-bottom: 10px !important;
+    border-bottom: 2px solid var(--border-color) !important;
+}
+
 .post-content h2 {
-    font-size: 1.8em;
-    font-weight: 600;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border-color);
+    font-size: 1.8em !important;
+    font-weight: 600 !important;
+    margin-top: 40px !important;
+    margin-bottom: 20px !important;
+    padding-bottom: 10px !important;
+    border-bottom: 1px solid var(--border-color) !important;
 }
 
 .post-content h3 {
@@ -481,12 +585,13 @@ article time {
 }
 
 .post-content pre {
-    background-color: #f5f5f5;
-    border: 1px solid var(--border-color);
-    padding: 20px;
-    border-radius: 4px;
-    overflow-x: auto;
-    margin-bottom: 20px;
+    background-color: #f5f5f5 !important;
+    border: 1px solid var(--border-color) !important;
+    padding: 20px !important;
+    border-radius: 4px !important;
+    overflow-x: auto !important;
+    margin-bottom: 20px !important;
+    position: relative !important;
 }
 
 .post-content pre code {
@@ -582,100 +687,157 @@ article time {
     }
 }
 
-/* Documents 페이지 스타일 */
+/* Documents 페이지 스타일 - 기존 스타일 유지 */
 .documents-page {
     max-width: 1000px;
 }
 
 .documents-page h1 {
-    font-size: 2.5em;
-    font-weight: 700;
-    margin-bottom: 30px;
-    color: var(--text-color);
+    font-size: 2.5em !important;
+    font-weight: 700 !important;
+    margin-bottom: 30px !important;
+    margin-top: 0 !important;
+    color: var(--text-color) !important;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
 }
 
 .documents-page h2 {
-    font-size: 1.5em;
-    font-weight: 600;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    color: var(--text-color);
+    font-size: 1.5em !important;
+    font-weight: 600 !important;
+    margin-top: 30px !important;
+    margin-bottom: 15px !important;
+    color: var(--text-color) !important;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+}
+
+.documents-page h3 {
+    font-size: 1.2em !important;
+    font-weight: 600 !important;
+    margin-top: 24px !important;
+    margin-bottom: 12px !important;
+    color: var(--text-color) !important;
 }
 
 .documents-page code {
-    background-color: #f5f5f5;
-    border: 1px solid var(--border-color);
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-size: 0.9em;
-    font-family: 'Courier New', monospace;
+    background-color: #f5f5f5 !important;
+    border: 1px solid var(--border-color) !important;
+    padding: 2px 6px !important;
+    border-radius: 3px !important;
+    font-size: 0.9em !important;
+    font-family: 'Courier New', monospace !important;
 }
 
 .documents-page pre {
-    background-color: #f5f5f5;
-    border: 1px solid var(--border-color);
-    padding: 20px;
-    border-radius: 4px;
-    overflow-x: auto;
-    margin-bottom: 20px;
+    background-color: #f5f5f5 !important;
+    border: 1px solid var(--border-color) !important;
+    padding: 20px !important;
+    border-radius: 4px !important;
+    overflow-x: auto !important;
+    margin-bottom: 20px !important;
+    position: relative !important;
 }
 
 .documents-page pre code {
-    background: none;
-    border: none;
-    padding: 0;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
 }
 
-/* Icons 페이지 스타일 */
+.documents-page ul {
+    margin-bottom: 20px !important;
+    padding-left: 30px !important;
+    list-style-type: disc !important;
+}
+
+.documents-page ul ul {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    list-style-type: circle !important;
+}
+
+.documents-page ul ul ul {
+    list-style-type: square !important;
+}
+
+.documents-page li {
+    margin-bottom: 8px !important;
+    line-height: 1.7 !important;
+    color: var(--text-color) !important;
+}
+
+.documents-page li strong {
+    font-weight: 600 !important;
+    color: var(--text-color) !important;
+}
+
+.documents-page ol {
+    margin-bottom: 20px !important;
+    padding-left: 30px !important;
+}
+
+.documents-page ol li {
+    margin-bottom: 8px !important;
+    line-height: 1.7 !important;
+}
+
+/* Icons 페이지 스타일 - 기존 스타일 유지 */
 .icons-page {
     max-width: 1000px;
 }
 
 .icons-page h1 {
-    font-size: 2.5em;
-    font-weight: 700;
-    margin-bottom: 30px;
-    color: var(--text-color);
+    font-size: 2.5em !important;
+    font-weight: 700 !important;
+    margin-bottom: 30px !important;
+    margin-top: 0 !important;
+    color: var(--text-color) !important;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
 }
 
 .icons-page h2 {
-    font-size: 1.5em;
-    font-weight: 600;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    color: var(--text-color);
+    font-size: 1.5em !important;
+    font-weight: 600 !important;
+    margin-top: 40px !important;
+    margin-bottom: 20px !important;
+    color: var(--text-color) !important;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
 }
 
 .icons-page h3 {
-    font-size: 1.2em;
-    font-weight: 600;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    color: var(--text-color);
+    font-size: 1.2em !important;
+    font-weight: 600 !important;
+    margin-top: 30px !important;
+    margin-bottom: 15px !important;
+    color: var(--text-color) !important;
 }
 
 .icons-page code {
-    background-color: #f5f5f5;
-    border: 1px solid var(--border-color);
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-size: 0.9em;
-    font-family: 'Courier New', monospace;
+    background-color: #f5f5f5 !important;
+    border: 1px solid var(--border-color) !important;
+    padding: 2px 6px !important;
+    border-radius: 3px !important;
+    font-size: 0.9em !important;
+    font-family: 'Courier New', monospace !important;
 }
 
 .icons-page pre {
-    background-color: #f5f5f5;
-    border: 1px solid var(--border-color);
-    padding: 20px;
-    border-radius: 4px;
-    overflow-x: auto;
-    margin-bottom: 20px;
+    background-color: #f5f5f5 !important;
+    border: 1px solid var(--border-color) !important;
+    padding: 20px !important;
+    border-radius: 4px !important;
+    overflow-x: auto !important;
+    margin-bottom: 20px !important;
+    position: relative !important;
 }
 
 .icons-page pre code {
-    background: none;
-    border: none;
-    padding: 0;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
 }
 
 .icons-page ul {
@@ -735,64 +897,70 @@ article time {
     padding: 0;
 }
 
-/* Styles 페이지 스타일 */
+/* Styles 페이지 스타일 - 기존 스타일 유지 */
 .styles-page {
     max-width: 1000px;
 }
 
 .styles-page h1 {
-    font-size: 2.5em;
-    font-weight: 700;
-    margin-bottom: 30px;
-    color: var(--text-color);
+    font-size: 2.5em !important;
+    font-weight: 700 !important;
+    margin-bottom: 30px !important;
+    margin-top: 0 !important;
+    color: var(--text-color) !important;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
 }
 
 .styles-page h2 {
-    font-size: 1.5em;
-    font-weight: 600;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    color: var(--text-color);
+    font-size: 1.5em !important;
+    font-weight: 600 !important;
+    margin-top: 40px !important;
+    margin-bottom: 20px !important;
+    color: var(--text-color) !important;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
 }
 
 .styles-page h3 {
-    font-size: 1.2em;
-    font-weight: 600;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    color: var(--text-color);
+    font-size: 1.2em !important;
+    font-weight: 600 !important;
+    margin-top: 30px !important;
+    margin-bottom: 15px !important;
+    color: var(--text-color) !important;
 }
 
 .styles-page h4 {
-    font-size: 1.1em;
-    font-weight: 600;
-    margin-top: 20px;
-    margin-bottom: 12px;
-    color: var(--text-color);
+    font-size: 1.1em !important;
+    font-weight: 600 !important;
+    margin-top: 20px !important;
+    margin-bottom: 12px !important;
+    color: var(--text-color) !important;
 }
 
 .styles-page code {
-    background-color: #f5f5f5;
-    border: 1px solid var(--border-color);
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-size: 0.9em;
-    font-family: 'Courier New', monospace;
+    background-color: #f5f5f5 !important;
+    border: 1px solid var(--border-color) !important;
+    padding: 2px 6px !important;
+    border-radius: 3px !important;
+    font-size: 0.9em !important;
+    font-family: 'Courier New', monospace !important;
 }
 
 .styles-page pre {
-    background-color: #f5f5f5;
-    border: 1px solid var(--border-color);
-    padding: 20px;
-    border-radius: 4px;
-    overflow-x: auto;
-    margin-bottom: 20px;
+    background-color: #f5f5f5 !important;
+    border: 1px solid var(--border-color) !important;
+    padding: 20px !important;
+    border-radius: 4px !important;
+    overflow-x: auto !important;
+    margin-bottom: 20px !important;
+    position: relative !important;
 }
 
 .styles-page pre code {
-    background: none;
-    border: none;
-    padding: 0;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
 }
 
 .styles-page ul {
@@ -952,6 +1120,348 @@ article time {
 .spacing-box.l { width: 24px; height: 16px; }
 .spacing-box.xl { width: 32px; height: 16px; }
 .spacing-box.xxl { width: 48px; height: 16px; }
+
+/* 문서 페이지 스타일 */
+.doc-single {
+    max-width: 1000px;
+    margin: 0;
+}
+
+.doc-header {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* 빵부스러기 네비게이션 */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    color: var(--text-light);
+}
+
+.breadcrumbs a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumbs a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+.breadcrumbs .separator {
+    color: var(--text-light);
+}
+
+.breadcrumbs .current {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.doc-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: var(--text-light);
+}
+
+.doc-date,
+.doc-lastmod,
+.reading-time {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.doc-date i,
+.doc-lastmod i,
+.reading-time i {
+    font-size: 16px;
+}
+
+.doc-title {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.doc-meta {
+    color: var(--text-light);
+    font-size: 0.9em;
+}
+
+.doc-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.doc-content {
+    flex: 1;
+    min-width: 0;
+}
+
+/* documents-page는 기존 스타일 유지 */
+.doc-single .doc-content h1,
+.doc-single .doc-content h2,
+.doc-single .doc-content h3,
+.doc-single .doc-content h4 {
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    scroll-margin-top: 20px;
+}
+
+.doc-single .doc-content h1 {
+    font-size: 2em;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.doc-single .doc-content h2 {
+    font-size: 1.5em;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+.doc-single .doc-content h3 {
+    font-size: 1.2em;
+}
+
+.heading-anchor {
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.2s;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+.doc-single .doc-content h1:hover .heading-anchor,
+.doc-single .doc-content h2:hover .heading-anchor,
+.doc-single .doc-content h3:hover .heading-anchor,
+.doc-single .doc-content h4:hover .heading-anchor {
+    opacity: 1;
+}
+
+/* 목차 스타일 */
+.doc-toc {
+    width: 250px;
+    position: sticky;
+    top: 20px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.toc-header {
+    margin-bottom: 15px;
+}
+
+.toc-header h3 {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.toc-content {
+    font-size: 0.9em;
+    line-height: 1.8;
+}
+
+.toc-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.toc-content li {
+    margin-bottom: 8px;
+}
+
+.toc-content a {
+    color: var(--text-light);
+    text-decoration: none;
+    display: block;
+    padding: 4px 0;
+    transition: all 0.2s;
+    border-left: 2px solid transparent;
+    padding-left: 12px;
+}
+
+.toc-content a:hover {
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+}
+
+.toc-content a.active {
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+    font-weight: 500;
+}
+
+.toc-content ul ul {
+    padding-left: 20px;
+    margin-top: 4px;
+}
+
+/* 코드 복사 버튼 */
+.doc-single pre,
+.doc-content pre,
+.post-content pre {
+    position: relative;
+}
+
+/* Prism.js의 copy 플러그인 버튼 숨기기 */
+pre code[class*="language-"] + .copy-to-clipboard-button,
+pre .copy-to-clipboard-button,
+pre button[data-copy-state],
+div[class*="copy-to-clipboard"] {
+    display: none !important;
+}
+
+/* 우리가 추가한 복사 버튼만 표시 */
+.copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-color);
+    transition: all 0.2s;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copy-button:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.copy-button.copied {
+    background: #28a745;
+    color: white;
+    border-color: #28a745;
+}
+
+.copy-button i {
+    font-size: 16px;
+}
+
+/* 문서 네비게이션 */
+.doc-footer {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-color);
+}
+
+.doc-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.doc-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.2s;
+    flex: 1;
+    max-width: 48%;
+}
+
+.doc-nav-link:hover {
+    border-color: var(--primary-color);
+    background: #f8f9fa;
+    color: var(--primary-color);
+}
+
+.doc-nav-link.prev {
+    text-align: left;
+}
+
+.doc-nav-link.next {
+    text-align: right;
+    flex-direction: row-reverse;
+}
+
+.nav-icon {
+    font-size: 1.2em;
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.nav-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-label {
+    font-size: 0.85em;
+    color: var(--text-light);
+}
+
+.nav-title {
+    font-weight: 500;
+    font-size: 0.95em;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+    .doc-wrapper {
+        flex-direction: column;
+    }
+    
+    .doc-toc {
+        width: 100%;
+        position: relative;
+        top: 0;
+        max-height: none;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .heading-anchor {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .doc-nav {
+        flex-direction: column;
+    }
+    
+    .doc-nav-link {
+        max-width: 100%;
+    }
+}
 
 /* 화이트 배경 유지 - 다크 모드 비활성화 */
 

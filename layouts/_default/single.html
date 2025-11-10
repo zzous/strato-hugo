@@ -3,7 +3,10 @@
     <header class="post-header-single">
         <h1 class="post-title">{{ .Title }}</h1>
         <div class="post-meta-single">
-            <time class="post-date-single">{{ .Date.Format "2006년 1월 2일" }}</time>
+            <time class="post-date-single">
+                <i class="mdi mdi-calendar"></i>
+                {{ .Date.Format "2006년 1월 2일" }}
+            </time>
             {{ if .Params.categories }}
             <div class="categories">
                 {{ range .Params.categories }}
@@ -17,6 +20,12 @@
                 <span class="tag">{{ . }}</span>
                 {{ end }}
             </div>
+            {{ end }}
+            {{ if .Content }}
+            <span class="reading-time">
+                <i class="mdi mdi-clock-outline"></i>
+                읽는 시간: {{ div (countwords .Content) 200 | add 1 }}분
+            </span>
             {{ end }}
         </div>
     </header>

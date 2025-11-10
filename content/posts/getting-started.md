@@ -20,20 +20,20 @@ Hugo를 설치하는 방법은 여러 가지가 있습니다:
 
 ## 2단계: 새 사이트 생성
 
-```bash
+```
 hugo new site my-site
 cd my-site
 ```
 
 ## 3단계: 콘텐츠 추가
 
-```bash
+```
 hugo new posts/my-first-post.md
 ```
 
 ## 4단계: 서버 실행
 
-```bash
+```
 hugo server
 ```
 
