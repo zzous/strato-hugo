@@ -15,9 +15,9 @@
     
     <h2>모든 페이지</h2>
     <ul class="page-list">
-        <li><a href="{{ "/about" | absURL }}">소개</a></li>
-        <li><a href="{{ "/posts" | absURL }}">블로그</a></li>
-        <li><a href="{{ "/contact" | absURL }}">연락처</a></li>
+        <li><a href="{{ .Site.BaseURL }}about/">소개</a></li>
+        <li><a href="{{ .Site.BaseURL }}posts/">블로그</a></li>
+        <li><a href="{{ .Site.BaseURL }}contact/">연락처</a></li>
     </ul>
 </div>
 {{ end }}

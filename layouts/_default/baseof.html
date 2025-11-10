@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Title }} - {{ .Site.Title }}</title>
-    <link rel="stylesheet" href="{{ "/css/style.css" | absURL }}">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css">
 </head>
 <body>
     <div class="layout-container">
@@ -13,10 +13,10 @@
                 <h1 class="site-title">{{ .Site.Title }}</h1>
             </div>
             <nav class="sidebar-nav">
-                <a href="{{ "/" | absURL }}" class="nav-item">홈</a>
-                <a href="{{ "/about" | absURL }}" class="nav-item">소개</a>
-                <a href="{{ "/posts" | absURL }}" class="nav-item">블로그</a>
-                <a href="{{ "/contact" | absURL }}" class="nav-item">연락처</a>
+                <a href="{{ .Site.BaseURL }}" class="nav-item">홈</a>
+                <a href="{{ .Site.BaseURL }}about/" class="nav-item">소개</a>
+                <a href="{{ .Site.BaseURL }}posts/" class="nav-item">블로그</a>
+                <a href="{{ .Site.BaseURL }}contact/" class="nav-item">연락처</a>
             </nav>
             <div class="sidebar-footer">
                 <p>&copy; {{ now.Year }} {{ .Site.Title }}</p>
