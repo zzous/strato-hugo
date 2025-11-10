@@ -197,6 +197,156 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 })();
 
+// Quick Navigation 생성
+(function() {
+    if (window.quickNavInitialized) {
+        return;
+    }
+    window.quickNavInitialized = true;
+    
+    function initQuickNav() {
+        const quickNav = document.getElementById('quick-nav');
+        const quickNavContent = document.getElementById('quick-nav-content');
+        
+        if (!quickNav || !quickNavContent) {
+            return;
+        }
+        
+        // 콘텐츠 영역에서 헤딩 찾기 (doc-content, post-content, 또는 article 내부)
+        const contentSelectors = [
+            '.doc-content',
+            '.post-content',
+            'article',
+            '.content-wrapper'
+        ];
+        
+        let contentArea = null;
+        for (let selector of contentSelectors) {
+            const element = document.querySelector(selector);
+            if (element) {
+                contentArea = element;
+                break;
+            }
+        }
+        
+        if (!contentArea) {
+            return;
+        }
+        
+        // 헤딩들 찾기 (h1은 제외, 페이지 제목이므로)
+        const headings = contentArea.querySelectorAll('h2, h3, h4, h5, h6');
+        
+        if (headings.length === 0) {
+            return;
+        }
+        
+        // 헤딩이 있으면 quick-nav 표시
+        quickNav.classList.add('visible');
+        
+        // ID가 없는 헤딩에 ID 추가
+        headings.forEach(function(heading, index) {
+            if (!heading.id) {
+                // 텍스트를 기반으로 ID 생성
+                const text = heading.textContent.trim();
+                const id = text.toLowerCase()
+                    .replace(/[^\w\s-]/g, '')
+                    .replace(/\s+/g, '-')
+                    .replace(/-+/g, '-')
+                    .replace(/^-|-$/g, '') || 'heading-' + index;
+                heading.id = id;
+            }
+        });
+        
+        // Navigation 메뉴 생성
+        const navList = document.createElement('ul');
+        let currentLevel = 0;
+        let currentList = navList;
+        const listStack = [navList];
+        
+        headings.forEach(function(heading) {
+            const level = parseInt(heading.tagName.charAt(1));
+            const id = heading.id;
+            const text = heading.textContent.trim();
+            
+            // 레벨이 깊어지면 중첩 리스트 생성
+            while (currentLevel < level) {
+                const newList = document.createElement('ul');
+                const lastItem = currentList.lastElementChild;
+                if (lastItem) {
+                    lastItem.appendChild(newList);
+                } else {
+                    currentList.appendChild(newList);
+                }
+                listStack.push(newList);
+                currentList = newList;
+                currentLevel++;
+            }
+            
+            // 레벨이 얕아지면 상위 리스트로 이동
+            while (currentLevel > level) {
+                listStack.pop();
+                currentList = listStack[listStack.length - 1];
+                currentLevel--;
+            }
+            
+            // 리스트 아이템 생성
+            const listItem = document.createElement('li');
+            listItem.setAttribute('data-level', level);
+            const link = document.createElement('a');
+            link.href = '#' + id;
+            link.textContent = text;
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector('#' + id);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    window.history.pushState(null, null, '#' + id);
+                }
+            });
+            listItem.appendChild(link);
+            currentList.appendChild(listItem);
+        });
+        
+        quickNavContent.appendChild(navList);
+        
+        // 스크롤 시 하이라이트
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -70% 0px',
+            threshold: 0
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    const navLink = quickNavContent.querySelector('a[href="#' + id + '"]');
+                    if (navLink) {
+                        // 모든 링크에서 active 제거
+                        quickNavContent.querySelectorAll('a').forEach(function(link) {
+                            link.classList.remove('active');
+                        });
+                        // 현재 링크에 active 추가
+                        navLink.classList.add('active');
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        headings.forEach(function(heading) {
+            if (heading.id) {
+                observer.observe(heading);
+            }
+        });
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initQuickNav);
+    } else {
+        initQuickNav();
+    }
+})();
+
 // 목차 링크 클릭 시 부드러운 스크롤
 document.addEventListener('DOMContentLoaded', function() {
     const tocLinks = document.querySelectorAll('.toc-content a');

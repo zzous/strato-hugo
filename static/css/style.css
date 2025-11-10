@@ -224,8 +224,102 @@ body {
 .main-content {
     flex: 1;
     padding: 40px;
-    max-width: 1200px;
+    max-width: 1400px;
     min-height: 100vh;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.content-wrapper {
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* 오른쪽 Quick Navigation */
+.quick-nav {
+    width: 250px;
+    position: sticky;
+    top: 20px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    flex-shrink: 0;
+    background-color: #ffffff;
+    border-left: 1px solid var(--border-color);
+    padding-left: 20px;
+    display: none; /* 기본적으로 숨김, JavaScript로 표시 */
+}
+
+.quick-nav.visible {
+    display: block;
+}
+
+.quick-nav-header {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.quick-nav-header h3 {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.quick-nav-content {
+    font-size: 0.9em;
+    line-height: 1.8;
+}
+
+.quick-nav-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.quick-nav-content li {
+    margin-bottom: 8px;
+}
+
+.quick-nav-content a {
+    color: var(--text-light);
+    text-decoration: none;
+    display: block;
+    padding: 4px 0;
+    transition: all 0.2s;
+    border-left: 2px solid transparent;
+    padding-left: 12px;
+    word-wrap: break-word;
+}
+
+.quick-nav-content a:hover {
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+}
+
+.quick-nav-content a.active {
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+    font-weight: 500;
+}
+
+.quick-nav-content ul ul {
+    padding-left: 20px;
+    margin-top: 4px;
+}
+
+.quick-nav-content li[data-level="1"] > a {
+    font-weight: 500;
+}
+
+.quick-nav-content li[data-level="2"] > a {
+    font-size: 0.95em;
+}
+
+.quick-nav-content li[data-level="3"] > a {
+    font-size: 0.9em;
 }
 
 /* footer는 사이드바로 이동했으므로 제거 */
@@ -346,6 +440,19 @@ article time {
     
     .main-content {
         padding: 20px;
+        flex-direction: column;
+    }
+    
+    .quick-nav {
+        width: 100%;
+        position: relative;
+        top: 0;
+        max-height: none;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid var(--border-color);
     }
     
     .home h1 {
@@ -1434,6 +1541,22 @@ div[class*="copy-to-clipboard"] {
 
 /* 반응형 디자인 */
 @media (max-width: 1024px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .quick-nav {
+        width: 100%;
+        position: relative;
+        top: 0;
+        max-height: none;
+        margin-top: 30px;
+        padding-top: 20px;
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+    }
+    
     .doc-wrapper {
         flex-direction: column;
     }
