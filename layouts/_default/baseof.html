@@ -10,13 +10,14 @@
     <div class="layout-container">
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h1 class="site-title">{{ .Site.Title }}</h1>
+                <a href="{{ .Site.BaseURL }}" class="logo-link">
+                    <img src="{{ .Site.BaseURL }}images/logo.png" alt="{{ .Site.Title }}" class="site-logo">
+                </a>
             </div>
             <nav class="sidebar-nav">
-                <a href="{{ .Site.BaseURL }}" class="nav-item">홈</a>
-                <a href="{{ .Site.BaseURL }}about/" class="nav-item">소개</a>
-                <a href="{{ .Site.BaseURL }}posts/" class="nav-item">블로그</a>
-                <a href="{{ .Site.BaseURL }}contact/" class="nav-item">연락처</a>
+                <a href="http://10.10.30.70:32030/?path=/docs/documents--docs" class="nav-item" target="_blank">Documents</a>
+                <a href="http://10.10.30.70:32030/?path=/docs/documents-icons--docs" class="nav-item" target="_blank">Icons</a>
+                <a href="http://10.10.30.70:32030/?path=/docs/documents-styles--docs" class="nav-item" target="_blank">Styles</a>
             </nav>
             <div class="sidebar-footer">
                 <p>&copy; {{ now.Year }} {{ .Site.Title }}</p>
