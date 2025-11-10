@@ -15,9 +15,9 @@
                 </a>
             </div>
             <nav class="sidebar-nav">
-                <a href="http://10.10.30.70:32030/?path=/docs/documents--docs" class="nav-item" target="_blank">Documents</a>
-                <a href="http://10.10.30.70:32030/?path=/docs/documents-icons--docs" class="nav-item" target="_blank">Icons</a>
-                <a href="http://10.10.30.70:32030/?path=/docs/documents-styles--docs" class="nav-item" target="_blank">Styles</a>
+                <a href="{{ .Site.BaseURL }}docs/documents/" class="nav-item">Documents</a>
+                <a href="{{ .Site.BaseURL }}docs/documents-icons/" class="nav-item">Icons</a>
+                <a href="{{ .Site.BaseURL }}docs/documents-styles/" class="nav-item">Styles</a>
             </nav>
             <div class="sidebar-footer">
                 <p>&copy; {{ now.Year }} {{ .Site.Title }}</p>
