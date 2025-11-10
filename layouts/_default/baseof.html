@@ -19,19 +19,21 @@
             {{ $currentRelPermalink := $currentPage.RelPermalink }}
             {{ $currentPathNoSlash := strings.TrimSuffix "/" $currentRelPermalink }}
             {{ $currentFileBaseName := "" }}
+            {{ $currentFilePath := "" }}
             {{ if $currentPage.File }}
                 {{ $currentFileBaseName = $currentPage.File.BaseFileName }}
+                {{ $currentFilePath = $currentPage.File.Path }}
             {{ end }}
             <nav class="sidebar-nav">
                 <div class="nav-group">
                     <div class="nav-group-title">Documents</div>
                     <div class="nav-group-items">
-                        <a href="{{ .Site.BaseURL }}docs/documents/" class="nav-item nav-sub-item{{ if or (eq $currentRelPermalink "/docs/documents/") (eq $currentPathNoSlash "/docs/documents") (eq $currentFileBaseName "documents") }} active{{ end }}">docs</a>
-                        <a href="{{ .Site.BaseURL }}docs/documents-icons/" class="nav-item nav-sub-item{{ if or (eq $currentRelPermalink "/docs/documents-icons/") (eq $currentPathNoSlash "/docs/documents-icons") (eq $currentFileBaseName "documents-icons") }} active{{ end }}">icons</a>
-                        <a href="{{ .Site.BaseURL }}docs/documents-styles/" class="nav-item nav-sub-item{{ if or (eq $currentRelPermalink "/docs/documents-styles/") (eq $currentPathNoSlash "/docs/documents-styles") (eq $currentFileBaseName "documents-styles") }} active{{ end }}">styles</a>
-                        <a href="{{ .Site.BaseURL }}docs/documents-convention/" class="nav-item nav-sub-item{{ if or (eq $currentRelPermalink "/docs/documents-convention/") (eq $currentPathNoSlash "/docs/documents-convention") (eq $currentFileBaseName "documents-convention") }} active{{ end }}">convention</a>
-                        <a href="{{ .Site.BaseURL }}docs/documents-components/" class="nav-item nav-sub-item{{ if or (eq $currentRelPermalink "/docs/documents-components/") (eq $currentPathNoSlash "/docs/documents-components") (eq $currentFileBaseName "documents-components") }} active{{ end }}">components</a>
-                        <a href="{{ .Site.BaseURL }}docs/documents-i18n/" class="nav-item nav-sub-item{{ if or (eq $currentRelPermalink "/docs/documents-i18n/") (eq $currentPathNoSlash "/docs/documents-i18n") (eq $currentFileBaseName "documents-i18n") }} active{{ end }}">i18n</a>
+                        <a href="{{ .Site.BaseURL }}docs/documents/" class="nav-item nav-sub-item{{ if or (eq $currentRelPermalink "/docs/documents/") (eq $currentPathNoSlash "/docs/documents") (eq $currentFileBaseName "documents") (eq $currentFilePath "docs/documents.html") }} active{{ end }}">docs</a>
+                        <a href="{{ .Site.BaseURL }}docs/documents-icons/" class="nav-item nav-sub-item{{ if or (eq $currentRelPermalink "/docs/documents-icons/") (eq $currentPathNoSlash "/docs/documents-icons") (eq $currentFileBaseName "documents-icons") (eq $currentFilePath "docs/documents-icons.html") }} active{{ end }}">icons</a>
+                        <a href="{{ .Site.BaseURL }}docs/documents-styles/" class="nav-item nav-sub-item{{ if or (eq $currentRelPermalink "/docs/documents-styles/") (eq $currentPathNoSlash "/docs/documents-styles") (eq $currentFileBaseName "documents-styles") (eq $currentFilePath "docs/documents-styles.html") }} active{{ end }}">styles</a>
+                        <a href="{{ .Site.BaseURL }}docs/documents-convention/" class="nav-item nav-sub-item{{ if or (eq $currentRelPermalink "/docs/documents-convention/") (eq $currentPathNoSlash "/docs/documents-convention") (eq $currentFileBaseName "documents-convention") (eq $currentFilePath "docs/documents-convention.html") }} active{{ end }}">convention</a>
+                        <a href="{{ .Site.BaseURL }}docs/documents-components/" class="nav-item nav-sub-item{{ if or (eq $currentRelPermalink "/docs/documents-components/") (eq $currentPathNoSlash "/docs/documents-components") (eq $currentFileBaseName "documents-components") (eq $currentFilePath "docs/documents-components.html") }} active{{ end }}">components</a>
+                        <a href="{{ .Site.BaseURL }}docs/documents-i18n/" class="nav-item nav-sub-item{{ if or (eq $currentRelPermalink "/docs/documents-i18n/") (eq $currentPathNoSlash "/docs/documents-i18n") (eq $currentFileBaseName "documents-i18n") (eq $currentFilePath "docs/documents-i18n.html") }} active{{ end }}">i18n</a>
                     </div>
                 </div>
                 <div class="nav-group">
