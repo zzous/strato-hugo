@@ -47,11 +47,12 @@ jobs:
           hugo \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --baseURL "https://zzous.github.io/strato-hugo/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: public
+          
   deploy:
     environment:
       name: github-pages
