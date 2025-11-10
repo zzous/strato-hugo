@@ -1,0 +1,23 @@
+{{ define "main" }}
+<div class="home">
+    <h1>{{ .Site.Title }}</h1>
+    <p>{{ .Site.Params.description }}</p>
+    
+    <h2>최근 블로그 포스트</h2>
+    <ul class="post-list">
+        {{ range where .Site.RegularPages "Section" "posts" | first 5 }}
+        <li>
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+            <span class="date">{{ .Date.Format "2006-01-02" }}</span>
+        </li>
+        {{ end }}
+    </ul>
+    
+    <h2>모든 페이지</h2>
+    <ul class="page-list">
+        <li><a href="{{ "/about" | relURL }}">소개</a></li>
+        <li><a href="{{ "/posts" | relURL }}">블로그</a></li>
+        <li><a href="{{ "/contact" | relURL }}">연락처</a></li>
+    </ul>
+</div>
+{{ end }}

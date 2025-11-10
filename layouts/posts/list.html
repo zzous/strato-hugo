@@ -1,0 +1,44 @@
+{{ define "main" }}
+<div class="posts-page">
+    <header class="posts-header">
+        <h1>블로그 포스트</h1>
+        <p class="posts-count">{{ len .Pages }}개의 포스트</p>
+    </header>
+    
+    <ul class="post-list">
+        {{ range .Pages }}
+        <li>
+            <article class="post-card">
+                <div class="post-header">
+                    <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                    <div class="post-meta">
+                        <time class="post-date">{{ .Date.Format "2006년 1월 2일" }}</time>
+                        {{ if .Params.categories }}
+                        <div class="categories">
+                            {{ range .Params.categories }}
+                            <span class="category">{{ . }}</span>
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                        {{ if .Params.tags }}
+                        <div class="tags">
+                            {{ range .Params.tags }}
+                            <span class="tag">{{ . }}</span>
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+                {{ if .Summary }}
+                <div class="post-summary">
+                    <p>{{ .Summary }}</p>
+                    <a href="{{ .Permalink }}" class="read-more">더 읽기 →</a>
+                </div>
+                {{ end }}
+            </article>
+        </li>
+        {{ end }}
+    </ul>
+</div>
+{{ end }}
+

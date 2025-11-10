@@ -1,0 +1,11 @@
+# GitHub Pages 배포 시 아래 baseURL을 변경하세요:
+# baseURL = 'https://사용자명.github.io/저장소명/'
+# 예: baseURL = 'https://username.github.io/my-hugo-site/'
+baseURL = 'https://zzous.github.io/strato-hugo/'
+languageCode = 'ko'
+title = 'My New Hugo Site'
+# theme = ''  # 테마를 사용하지 않으므로 주석 처리
+
+[params]
+  description = 'Hugo 사이트입니다'
+

@@ -1,0 +1,44 @@
+{{ define "main" }}
+<article class="post-single">
+    <header class="post-header-single">
+        <h1 class="post-title">{{ .Title }}</h1>
+        <div class="post-meta-single">
+            <time class="post-date-single">{{ .Date.Format "2006년 1월 2일" }}</time>
+            {{ if .Params.categories }}
+            <div class="categories">
+                {{ range .Params.categories }}
+                <span class="category">{{ . }}</span>
+                {{ end }}
+            </div>
+            {{ end }}
+            {{ if .Params.tags }}
+            <div class="tags">
+                {{ range .Params.tags }}
+                <span class="tag">{{ . }}</span>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+    </header>
+    
+    <div class="post-content">
+        {{ .Content }}
+    </div>
+    
+    <footer class="post-footer">
+        <nav class="post-nav">
+            {{ if .PrevInSection }}
+            <a href="{{ .PrevInSection.Permalink }}" class="nav-link prev">
+                ← 이전 포스트: {{ .PrevInSection.Title }}
+            </a>
+            {{ end }}
+            {{ if .NextInSection }}
+            <a href="{{ .NextInSection.Permalink }}" class="nav-link next">
+                다음 포스트: {{ .NextInSection.Title }} →
+            </a>
+            {{ end }}
+        </nav>
+    </footer>
+</article>
+{{ end }}
+
