@@ -15,9 +15,14 @@
                 </a>
             </div>
             <nav class="sidebar-nav">
-                <a href="{{ .Site.BaseURL }}docs/documents/" class="nav-item">Documents</a>
-                <a href="{{ .Site.BaseURL }}docs/documents-icons/" class="nav-item">Icons</a>
-                <a href="{{ .Site.BaseURL }}docs/documents-styles/" class="nav-item">Styles</a>
+                <div class="nav-group">
+                    <div class="nav-group-title">Documents</div>
+                    <div class="nav-group-items">
+                        <a href="{{ .Site.BaseURL }}docs/documents/" class="nav-item nav-sub-item">docs</a>
+                        <a href="{{ .Site.BaseURL }}docs/documents-icons/" class="nav-item nav-sub-item">icons</a>
+                        <a href="{{ .Site.BaseURL }}docs/documents-styles/" class="nav-item nav-sub-item">styles</a>
+                    </div>
+                </div>
             </nav>
             <div class="sidebar-footer">
                 <p>&copy; {{ now.Year }} {{ .Site.Title }}</p>
