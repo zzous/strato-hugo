@@ -5,13 +5,30 @@ draft: false
 ---
 
 <div class="documents-page">
-    <h1>Documents</h1>
-    <p>문서 페이지입니다.</p>
+    <h1>Strato StoryBook</h1>
     
-    <!-- 여기에 HTML 내용을 자유롭게 작성할 수 있습니다 -->
-    <div class="content-section">
-        <h2>섹션 제목</h2>
-        <p>HTML로 작성된 내용입니다.</p>
-    </div>
+    <h2>📦 Current Version: 0.2.15</h2>
+    
+    <h2>📦 Nexus Initialize(<code>.npmrc</code>)</h2>
+    <pre><code class="language-bash">registry=https://registry.npmjs.org/
+@strato:registry=http://210.217.178.150:8081/repository/strato-ui/</code></pre>
+    
+    <h2>📦 Install Library</h2>
+    <pre><code class="language-bash">npm install @strato/components
+yarn add @strato/components</code></pre>
+    
+    <h2>📌 Initialize(<code>main.js</code>)</h2>
+    <pre><code class="language-javascript">import { createApp } from 'vue';
+import { createVuetify } from 'vuetify';
+import * as components from 'vuetify/components';
+import * as directives from 'vuetify/directives';
+import { customTheme } from '@strato/components';
+
+// styles
+import '@mdi/font/css/materialdesignicons.css';
+import '@strato/components/lib/style.css'; // Vuetify 스타일 포함
+
+const Vuetify = createVuetify({components, directives, theme: { ...customTheme }});
+createApp(App).use(Vuetify).mount('#app')</code></pre>
 </div>
 

@@ -109,10 +109,25 @@ body {
     background-color: #f5f5f5;
 }
 
+.nav-item.active {
+    color: var(--primary-color);
+    background-color: #E3F2FD;
+    border-left: 3px solid var(--primary-color);
+    font-weight: 600;
+}
+
+.nav-item.active:hover {
+    background-color: #E3F2FD;
+}
+
 .nav-sub-item {
     padding: 8px 16px 8px 32px;
     font-size: 0.9em;
     font-weight: 400;
+}
+
+.nav-sub-item.active {
+    padding-left: 29px; /* border-left 3px를 고려하여 조정 */
 }
 
 .sidebar-footer {
@@ -154,20 +169,20 @@ article time {
 }
 
 .post-list li, .page-list li {
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #ffffff;
-    border: 1px solid var(--card-border);
-    border-left: 3px solid var(--primary-color);
-    transition: border-color 0.2s ease;
+    margin-bottom: 24px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    border-left: none;
+    transition: none;
 }
 
 .post-list li:hover, .page-list li:hover {
-    border-left-color: var(--primary-hover);
-    border-color: var(--primary-color);
+    border-left-color: transparent;
+    border-color: transparent;
 }
 
-.post-list a {
+.post-list > li > a {
     color: var(--primary-color);
     text-decoration: none;
     font-size: 1.2em;
@@ -175,7 +190,7 @@ article time {
     transition: color 0.3s;
 }
 
-.post-list a:hover {
+.post-list > li > a:hover {
     color: var(--primary-hover);
 }
 
@@ -203,8 +218,10 @@ article time {
 .category {
     background-color: #f5f5f5;
     border: 1px solid var(--border-color);
-    padding: 3px 8px;
+    padding: 4px 10px;
     font-size: 0.85em;
+    border-radius: 3px;
+    color: var(--text-color);
 }
 
 .home h2 {
@@ -290,6 +307,18 @@ article time {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    padding: 24px;
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--primary-color);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.post-card:hover {
+    border-left-color: var(--primary-hover);
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .post-header {
@@ -359,9 +388,10 @@ article time {
 .tag {
     background-color: #f0f0f0;
     border: 1px solid var(--border-color);
-    padding: 2px 8px;
+    padding: 4px 10px;
     font-size: 0.85em;
-    color: var(--text-light);
+    color: var(--text-color);
+    border-radius: 3px;
 }
 
 /* 개별 포스트 페이지 스타일 */
@@ -551,6 +581,377 @@ article time {
         font-size: 2em;
     }
 }
+
+/* Documents 페이지 스타일 */
+.documents-page {
+    max-width: 1000px;
+}
+
+.documents-page h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--text-color);
+}
+
+.documents-page h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.documents-page code {
+    background-color: #f5f5f5;
+    border: 1px solid var(--border-color);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-family: 'Courier New', monospace;
+}
+
+.documents-page pre {
+    background-color: #f5f5f5;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+.documents-page pre code {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+/* Icons 페이지 스타일 */
+.icons-page {
+    max-width: 1000px;
+}
+
+.icons-page h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--text-color);
+}
+
+.icons-page h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.icons-page h3 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.icons-page code {
+    background-color: #f5f5f5;
+    border: 1px solid var(--border-color);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-family: 'Courier New', monospace;
+}
+
+.icons-page pre {
+    background-color: #f5f5f5;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+.icons-page pre code {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.icons-page ul {
+    margin-bottom: 20px;
+    padding-left: 30px;
+}
+
+.icons-page li {
+    margin-bottom: 8px;
+}
+
+.icons-page a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.icons-page a:hover {
+    text-decoration: underline;
+}
+
+/* 아이콘 그리드 */
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 16px 0 32px;
+}
+
+.icon-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: #f8f9fa;
+    transition: all 0.2s;
+}
+
+.icon-item:hover {
+    background: #f0f0f0;
+    border-color: var(--primary-color);
+}
+
+.icon-item .mdi {
+    font-size: 24px;
+    color: var(--primary-color);
+    margin-right: 12px;
+    min-width: 24px;
+}
+
+.icon-item code {
+    font-family: Monaco, Menlo, 'Ubuntu Mono', monospace;
+    font-size: 12px;
+    color: var(--text-light);
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+/* Styles 페이지 스타일 */
+.styles-page {
+    max-width: 1000px;
+}
+
+.styles-page h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--text-color);
+}
+
+.styles-page h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.styles-page h3 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.styles-page h4 {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    color: var(--text-color);
+}
+
+.styles-page code {
+    background-color: #f5f5f5;
+    border: 1px solid var(--border-color);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-family: 'Courier New', monospace;
+}
+
+.styles-page pre {
+    background-color: #f5f5f5;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+.styles-page pre code {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.styles-page ul {
+    margin-bottom: 20px;
+    padding-left: 30px;
+}
+
+.styles-page li {
+    margin-bottom: 8px;
+}
+
+/* 색상 그리드 */
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+    margin: 16px 0 32px;
+}
+
+.color-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: white;
+    transition: all 0.2s ease;
+}
+
+.color-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.color-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    margin-right: 12px;
+    border: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.color-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.color-name {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 4px;
+}
+
+.color-code {
+    font-family: Monaco, Menlo, 'Ubuntu Mono', monospace;
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+/* 색상 정의 */
+.primary-blue { background-color: #1B75BB; }
+.secondary-blue { background-color: #2C5AA0; }
+.light-blue { background-color: #E3F2FD; }
+.gray-1 { background-color: #F8F9FA; }
+.gray-2 { background-color: #E9ECEF; }
+.gray-3 { background-color: #DEE2E6; }
+.gray-4 { background-color: #CED4DA; }
+.gray-5 { background-color: #ADB5BD; }
+.gray-6 { background-color: #6C757D; }
+.gray-7 { background-color: #495057; }
+.gray-8 { background-color: #343A40; }
+.gray-9 { background-color: #212529; }
+.success { background-color: #28A745; }
+.warning { background-color: #FFC107; }
+.error { background-color: #DC3545; }
+.info { background-color: #17A2B8; }
+
+/* 폰트 웨이트 데모 */
+.font-weight-demo {
+    margin: 16px 0 32px;
+}
+
+.font-weight-item {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.font-weight-label {
+    min-width: 100px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.font-weight-text {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.font-weight-text.thin { font-weight: 100; }
+.font-weight-text.light { font-weight: 300; }
+.font-weight-text.regular { font-weight: 400; }
+.font-weight-text.medium { font-weight: 500; }
+.font-weight-text.semibold { font-weight: 600; }
+.font-weight-text.bold { font-weight: 700; }
+
+/* 폰트 사이즈 데모 */
+.font-size-demo {
+    margin: 16px 0 32px;
+}
+
+.font-size-item {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.font-size-label {
+    min-width: 140px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.font-size-text {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.font-size-text.small { font-size: 12px; }
+.font-size-text.base { font-size: 14px; }
+.font-size-text.medium { font-size: 16px; }
+.font-size-text.large { font-size: 18px; }
+.font-size-text.xlarge { font-size: 20px; }
+.font-size-text.title { font-size: 24px; }
+
+/* 스페이싱 데모 */
+.spacing-demo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 16px 0 32px;
+    align-items: center;
+}
+
+.spacing-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.spacing-box {
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.spacing-box.xs { width: 4px; height: 16px; }
+.spacing-box.s { width: 8px; height: 16px; }
+.spacing-box.m { width: 16px; height: 16px; }
+.spacing-box.l { width: 24px; height: 16px; }
+.spacing-box.xl { width: 32px; height: 16px; }
+.spacing-box.xxl { width: 48px; height: 16px; }
 
 /* 화이트 배경 유지 - 다크 모드 비활성화 */
 

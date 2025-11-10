@@ -5,20 +5,500 @@ draft: false
 ---
 
 <div class="styles-page">
-    <h1>Styles</h1>
-    <p>스타일 문서 페이지입니다.</p>
+    <h1>🎨 Style Guide</h1>
     
-    <!-- HTML로 스타일 가이드를 작성할 수 있습니다 -->
-    <div class="style-guide">
-        <section class="color-palette">
-            <h2>색상 팔레트</h2>
-            <!-- 색상 예시를 추가하세요 -->
-        </section>
-        
-        <section class="typography">
-            <h2>타이포그래피</h2>
-            <!-- 타이포그래피 예시를 추가하세요 -->
-        </section>
+    <h2>📋 Color Palette</h2>
+    
+    <h3>Primary Colors</h3>
+    <div class="color-grid">
+        <div class="color-item">
+            <div class="color-box primary-blue"></div>
+            <div class="color-info">
+                <span class="color-name">Primary Blue</span>
+                <span class="color-code">#1B75BB</span>
+            </div>
+        </div>
+        <div class="color-item">
+            <div class="color-box secondary-blue"></div>
+            <div class="color-info">
+                <span class="color-name">Secondary Blue</span>
+                <span class="color-code">#2C5AA0</span>
+            </div>
+        </div>
+        <div class="color-item">
+            <div class="color-box light-blue"></div>
+            <div class="color-info">
+                <span class="color-name">Light Blue</span>
+                <span class="color-code">#E3F2FD</span>
+            </div>
+        </div>
     </div>
-</div>
+    
+    <h4>Primary Colors 사용법</h4>
+    <ul>
+        <li><strong>Primary Blue ($s-primary)</strong>: 메인 액션 버튼, 링크, 브랜드 요소, 중요한 UI 요소</li>
+        <li><strong>Secondary Blue ($s-secondary)</strong>: 보조 액션, 호버 상태, 선택된 항목</li>
+        <li><strong>Light Blue ($s-light-blue)</strong>: 배경, 강조 영역, 알림 배경</li>
+    </ul>
+    
+    <pre><code class="language-scss">// SCSS 변수 사용
+.primary-element {
+  background-color: $s-primary;
+  color: white;
+}
 
+.secondary-element {
+  background-color: $s-secondary;
+  color: white;
+}
+
+.highlight-area {
+  background-color: $s-light-blue;
+  border: 1px solid $s-primary;
+}</code></pre>
+    
+    <h3>Gray Scale</h3>
+    <div class="color-grid">
+        <div class="color-item">
+            <div class="color-box gray-1"></div>
+            <div class="color-info">
+                <span class="color-name">Gray 1</span>
+                <span class="color-code">$s-gray-1</span>
+            </div>
+        </div>
+        <div class="color-item">
+            <div class="color-box gray-2"></div>
+            <div class="color-info">
+                <span class="color-name">Gray 2</span>
+                <span class="color-code">$s-gray-2</span>
+            </div>
+        </div>
+        <div class="color-item">
+            <div class="color-box gray-3"></div>
+            <div class="color-info">
+                <span class="color-name">Gray 3</span>
+                <span class="color-code">$s-gray-3</span>
+            </div>
+        </div>
+        <div class="color-item">
+            <div class="color-box gray-4"></div>
+            <div class="color-info">
+                <span class="color-name">Gray 4</span>
+                <span class="color-code">$s-gray-4</span>
+            </div>
+        </div>
+        <div class="color-item">
+            <div class="color-box gray-5"></div>
+            <div class="color-info">
+                <span class="color-name">Gray 5</span>
+                <span class="color-code">$s-gray-5</span>
+            </div>
+        </div>
+        <div class="color-item">
+            <div class="color-box gray-6"></div>
+            <div class="color-info">
+                <span class="color-name">Gray 6</span>
+                <span class="color-code">$s-gray-6</span>
+            </div>
+        </div>
+        <div class="color-item">
+            <div class="color-box gray-7"></div>
+            <div class="color-info">
+                <span class="color-name">Gray 7</span>
+                <span class="color-code">$s-gray-7</span>
+            </div>
+        </div>
+        <div class="color-item">
+            <div class="color-box gray-8"></div>
+            <div class="color-info">
+                <span class="color-name">Gray 8</span>
+                <span class="color-code">$s-gray-8</span>
+            </div>
+        </div>
+        <div class="color-item">
+            <div class="color-box gray-9"></div>
+            <div class="color-info">
+                <span class="color-name">Gray 9</span>
+                <span class="color-code">$s-gray-9</span>
+            </div>
+        </div>
+    </div>
+    
+    <h4>Gray Scale 사용법</h4>
+    <ul>
+        <li><strong>Gray 1-2 ($s-gray-1, $s-gray-2)</strong>: 배경색, 구분선, 비활성 상태</li>
+        <li><strong>Gray 3-4 ($s-gray-3, $s-gray-4)</strong>: 보더, 구분선, 플레이스홀더</li>
+        <li><strong>Gray 5-6 ($s-gray-5, $s-gray-6)</strong>: 보조 텍스트, 설명 텍스트</li>
+        <li><strong>Gray 7-8 ($s-gray-7, $s-gray-8)</strong>: 본문 텍스트, 제목</li>
+        <li><strong>Gray 9 ($s-gray-9)</strong>: 주요 텍스트, 헤더</li>
+    </ul>
+    
+    <h3>Status Colors</h3>
+    <div class="color-grid">
+        <div class="color-item">
+            <div class="color-box success"></div>
+            <div class="color-info">
+                <span class="color-name">Success</span>
+                <span class="color-code">$s-success</span>
+            </div>
+        </div>
+        <div class="color-item">
+            <div class="color-box warning"></div>
+            <div class="color-info">
+                <span class="color-name">Warning</span>
+                <span class="color-code">$s-warning</span>
+            </div>
+        </div>
+        <div class="color-item">
+            <div class="color-box error"></div>
+            <div class="color-info">
+                <span class="color-name">Error</span>
+                <span class="color-code">$s-error</span>
+            </div>
+        </div>
+        <div class="color-item">
+            <div class="color-box info"></div>
+            <div class="color-info">
+                <span class="color-name">Info</span>
+                <span class="color-code">$s-info</span>
+            </div>
+        </div>
+    </div>
+    
+    <h4>Status Colors 사용법</h4>
+    <ul>
+        <li><strong>Success ($s-success)</strong>: 성공 메시지, 완료 상태, 긍정적 피드백</li>
+        <li><strong>Warning ($s-warning)</strong>: 경고 메시지, 주의사항, 임시 상태</li>
+        <li><strong>Error ($s-error)</strong>: 오류 메시지, 삭제 액션, 위험 상태</li>
+        <li><strong>Info ($s-info)</strong>: 정보 메시지, 도움말, 알림</li>
+    </ul>
+    
+    <h4>🎨 색상 조합 예시</h4>
+    <pre><code class="language-scss">// 기본 요소 조합
+.element-group {
+  display: flex;
+  gap: 8px;
+  .primary-element {
+    background-color: $s-primary;
+    color: white;
+  }
+  .secondary-element {
+    background-color: transparent;
+    border: 1px solid $s-secondary;
+    color: $s-secondary;
+  }
+  .cancel-element {
+    background-color: transparent;
+    color: $s-gray-6;
+  }
+}
+
+// 상태별 카드 조합
+.status-card {
+  border-radius: 4px;
+  padding: 16px;
+  &.success {
+    border-left: 4px solid $s-success;
+    background-color: rgba($s-success, 0.05);
+  }
+  &.error {
+    border-left: 4px solid $s-error;
+    background-color: rgba($s-error, 0.05);
+  }
+  &.warning {
+    border-left: 4px solid $s-warning;
+    background-color: rgba($s-warning, 0.05);
+  }
+  &.info {
+    border-left: 4px solid $s-info;
+    background-color: rgba($s-info, 0.05);
+  }
+}</code></pre>
+    
+    <h4>📋 SCSS 변수 정의</h4>
+    <pre><code class="language-scss">// _variables.scss
+$s-primary: #1B75BB;
+$s-secondary: #2C5AA0;
+$s-light-blue: #E3F2FD;
+$s-gray-1: #F8F9FA;
+$s-gray-2: #E9ECEF;
+$s-gray-3: #DEE2E6;
+$s-gray-4: #CED4DA;
+$s-gray-5: #ADB5BD;
+$s-gray-6: #6C757D;
+$s-gray-7: #495057;
+$s-gray-8: #343A40;
+$s-gray-9: #212529;
+$s-success: #28A745;
+$s-warning: #FFC107;
+$s-error: #DC3545;
+$s-info: #17A2B8;</code></pre>
+    
+    <h2>📐 Typography</h2>
+    
+    <h3>Font Family</h3>
+    <ul>
+        <li><strong>Primary</strong>: Paperlogy (Custom Font)</li>
+        <li><strong>Fallback</strong>: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif</li>
+    </ul>
+    
+    <h3>Font Weights</h3>
+    <div class="font-weight-demo">
+        <div class="font-weight-item">
+            <span class="font-weight-label">Thin:</span>
+            <span class="font-weight-text thin">The quick brown fox jumps over the lazy dog</span>
+        </div>
+        <div class="font-weight-item">
+            <span class="font-weight-label">Light:</span>
+            <span class="font-weight-text light">The quick brown fox jumps over the lazy dog</span>
+        </div>
+        <div class="font-weight-item">
+            <span class="font-weight-label">Regular:</span>
+            <span class="font-weight-text regular">The quick brown fox jumps over the lazy dog</span>
+        </div>
+        <div class="font-weight-item">
+            <span class="font-weight-label">Medium:</span>
+            <span class="font-weight-text medium">The quick brown fox jumps over the lazy dog</span>
+        </div>
+        <div class="font-weight-item">
+            <span class="font-weight-label">Semi Bold:</span>
+            <span class="font-weight-text semibold">The quick brown fox jumps over the lazy dog</span>
+        </div>
+        <div class="font-weight-item">
+            <span class="font-weight-label">Bold:</span>
+            <span class="font-weight-text bold">The quick brown fox jumps over the lazy dog</span>
+        </div>
+    </div>
+    
+    <h3>Font Sizes</h3>
+    <div class="font-size-demo">
+        <div class="font-size-item">
+            <span class="font-size-label">Small (12px):</span>
+            <span class="font-size-text small">The quick brown fox jumps over the lazy dog</span>
+        </div>
+        <div class="font-size-item">
+            <span class="font-size-label">Base (14px):</span>
+            <span class="font-size-text base">The quick brown fox jumps over the lazy dog</span>
+        </div>
+        <div class="font-size-item">
+            <span class="font-size-label">Medium (16px):</span>
+            <span class="font-size-text medium">The quick brown fox jumps over the lazy dog</span>
+        </div>
+        <div class="font-size-item">
+            <span class="font-size-label">Large (18px):</span>
+            <span class="font-size-text large">The quick brown fox jumps over the lazy dog</span>
+        </div>
+        <div class="font-size-item">
+            <span class="font-size-label">Extra Large (20px):</span>
+            <span class="font-size-text xlarge">The quick brown fox jumps over the lazy dog</span>
+        </div>
+        <div class="font-size-item">
+            <span class="font-size-label">Title (24px):</span>
+            <span class="font-size-text title">The quick brown fox jumps over the lazy dog</span>
+        </div>
+    </div>
+    
+    <h2>🎯 Spacing</h2>
+    
+    <h3>Margin & Padding</h3>
+    <div class="spacing-demo">
+        <div class="spacing-item">
+            <div class="spacing-box xs"></div>
+            <span>XS: 4px</span>
+        </div>
+        <div class="spacing-item">
+            <div class="spacing-box s"></div>
+            <span>S: 8px</span>
+        </div>
+        <div class="spacing-item">
+            <div class="spacing-box m"></div>
+            <span>M: 16px</span>
+        </div>
+        <div class="spacing-item">
+            <div class="spacing-box l"></div>
+            <span>L: 24px</span>
+        </div>
+        <div class="spacing-item">
+            <div class="spacing-box xl"></div>
+            <span>XL: 32px</span>
+        </div>
+        <div class="spacing-item">
+            <div class="spacing-box xxl"></div>
+            <span>XXL: 48px</span>
+        </div>
+    </div>
+    
+    <h2>📦 Component Spacing</h2>
+    
+    <h3>Button</h3>
+    <ul>
+        <li><strong>Height</strong>: 36px (default), 40px (large)</li>
+        <li><strong>Padding</strong>: 0 16px</li>
+        <li><strong>Border Radius</strong>: 4px</li>
+    </ul>
+    
+    <h3>Input</h3>
+    <ul>
+        <li><strong>Height</strong>: 40px</li>
+        <li><strong>Padding</strong>: 0 12px</li>
+        <li><strong>Border Radius</strong>: 4px</li>
+    </ul>
+    
+    <h3>Modal</h3>
+    <ul>
+        <li><strong>Border Radius</strong>: 8px</li>
+        <li><strong>Shadow</strong>: 0 4px 20px rgba(0, 0, 0, 0.15)</li>
+    </ul>
+    
+    <h2>🎨 Icons</h2>
+    
+    <h3>Available Icons</h3>
+    <p>This project uses Material Design Icons (MDI). Here are some commonly used icons:</p>
+    
+    <h4>Navigation</h4>
+    <ul>
+        <li><code>mdi-menu</code> - Hamburger menu</li>
+        <li><code>mdi-close</code> - Close/X button</li>
+        <li><code>mdi-arrow-left</code> - Back arrow</li>
+        <li><code>mdi-arrow-right</code> - Forward arrow</li>
+        <li><code>mdi-chevron-down</code> - Dropdown arrow</li>
+        <li><code>mdi-chevron-up</code> - Up arrow</li>
+    </ul>
+    
+    <h4>Actions</h4>
+    <ul>
+        <li><code>mdi-plus</code> - Add/Plus</li>
+        <li><code>mdi-minus</code> - Remove/Minus</li>
+        <li><code>mdi-edit</code> - Edit</li>
+        <li><code>mdi-delete</code> - Delete</li>
+        <li><code>mdi-save</code> - Save</li>
+        <li><code>mdi-refresh</code> - Refresh</li>
+        <li><code>mdi-search</code> - Search</li>
+        <li><code>mdi-filter</code> - Filter</li>
+    </ul>
+    
+    <h4>Status</h4>
+    <ul>
+        <li><code>mdi-check</code> - Success/Check</li>
+        <li><code>mdi-alert</code> - Warning</li>
+        <li><code>mdi-alert-circle</code> - Error</li>
+        <li><code>mdi-information</code> - Info</li>
+    </ul>
+    
+    <h3>Icon Usage</h3>
+    <pre><code class="language-vue">&lt;v-icon&gt;mdi-check&lt;/v-icon&gt;
+&lt;v-icon color="primary"&gt;mdi-alert&lt;/v-icon&gt;
+&lt;v-icon size="large"&gt;mdi-refresh&lt;/v-icon&gt;</code></pre>
+    
+    <h2>📱 Responsive Design</h2>
+    
+    <h3>Breakpoints</h3>
+    <ul>
+        <li><strong>Mobile</strong>: &lt; 768px</li>
+        <li><strong>Tablet</strong>: 768px - 1024px</li>
+        <li><strong>Desktop</strong>: &gt; 1024px</li>
+    </ul>
+    
+    <h3>Container Max Widths</h3>
+    <ul>
+        <li><strong>Small</strong>: 540px</li>
+        <li><strong>Medium</strong>: 720px</li>
+        <li><strong>Large</strong>: 960px</li>
+        <li><strong>Extra Large</strong>: 1140px</li>
+    </ul>
+    
+    <h2>🎭 Animation</h2>
+    
+    <h3>Transitions</h3>
+    <ul>
+        <li><strong>Fast</strong>: 150ms</li>
+        <li><strong>Normal</strong>: 250ms</li>
+        <li><strong>Slow</strong>: 350ms</li>
+    </ul>
+    
+    <h3>Easing</h3>
+    <ul>
+        <li><strong>Ease In</strong>: <code>cubic-bezier(0.4, 0, 1, 1)</code></li>
+        <li><strong>Ease Out</strong>: <code>cubic-bezier(0, 0, 0.2, 1)</code></li>
+        <li><strong>Ease In Out</strong>: <code>cubic-bezier(0.4, 0, 0.2, 1)</code></li>
+    </ul>
+    
+    <h2>📋 CSS Variables</h2>
+    
+    <h3>Custom Properties</h3>
+    <pre><code class="language-css">:root {
+  --s-primary: #1B75BB;
+  --s-secondary: #2C5AA0;
+  --s-success: #28A745;
+  --s-warning: #FFC107;
+  --s-error: #DC3545;
+  --s-info: #17A2B8;
+  
+  --s-gray-1: #F8F9FA;
+  --s-gray-2: #E9ECEF;
+  --s-gray-3: #DEE2E6;
+  --s-gray-4: #CED4DA;
+  --s-gray-5: #ADB5BD;
+  --s-gray-6: #6C757D;
+  --s-gray-7: #495057;
+  --s-gray-8: #343A40;
+  --s-gray-9: #212529;
+  
+  --s-border-radius: 4px;
+  --s-border-radius-lg: 8px;
+  --s-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --s-shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.15);
+}</code></pre>
+    
+    <h2>🎨 Component Theming</h2>
+    
+    <h3>Button Variants</h3>
+    <ul>
+        <li><strong>Primary</strong>: Blue background, white text</li>
+        <li><strong>Secondary</strong>: Gray background, dark text</li>
+        <li><strong>Outline</strong>: Transparent background, colored border</li>
+        <li><strong>Text</strong>: Transparent background, colored text</li>
+    </ul>
+    
+    <h3>Input States</h3>
+    <ul>
+        <li><strong>Default</strong>: Gray border</li>
+        <li><strong>Focus</strong>: Blue border</li>
+        <li><strong>Error</strong>: Red border</li>
+        <li><strong>Success</strong>: Green border</li>
+        <li><strong>Disabled</strong>: Gray background, reduced opacity</li>
+    </ul>
+    
+    <h3>Modal Types</h3>
+    <ul>
+        <li><strong>Light</strong>: White header, dark text</li>
+        <li><strong>Dark</strong>: Blue header, white text</li>
+    </ul>
+    
+    <h2>📖 Best Practices</h2>
+    
+    <h3>Accessibility</h3>
+    <ul>
+        <li>Use semantic HTML elements</li>
+        <li>Provide alt text for images</li>
+        <li>Ensure sufficient color contrast (4.5:1 minimum)</li>
+        <li>Support keyboard navigation</li>
+        <li>Use ARIA labels where appropriate</li>
+    </ul>
+    
+    <h3>Performance</h3>
+    <ul>
+        <li>Minimize CSS bundle size</li>
+        <li>Use CSS variables for theming</li>
+        <li>Optimize images and icons</li>
+        <li>Lazy load non-critical resources</li>
+    </ul>
+    
+    <h3>Maintainability</h3>
+    <ul>
+        <li>Follow BEM naming convention</li>
+        <li>Use CSS variables for consistent values</li>
+        <li>Document component APIs</li>
+        <li>Keep styles modular and reusable</li>
+    </ul>
+</div>

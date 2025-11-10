@@ -1,0 +1,108 @@
+---
+title: "I18n"
+date: 2024-11-10
+draft: false
+description: i18n - 다국어 사용 규칙
+---
+
+<div class="documents-page">
+    <h1>I18n 사용 규칙</h1>
+    
+    <h2>1. 기본 규칙</h2>
+    <ul>
+        <li>모든 정적 텍스트는 i18n을 사용하여 다국어 처리할 것</li>
+        <li>하드코딩된 한글 텍스트 사용 금지</li>
+        <li><code>translation.json</code> 파일은 직접 수정하지 말고 Google Sheets를 통해 관리할 것</li>
+    </ul>
+    
+    <h2>2. 키 네이밍 규칙</h2>
+    <ul>
+        <li>키는 계층 구조로 작성하고 점(.)으로 구분</li>
+    </ul>
+    
+    <pre><code class="language-json">// 올바른 예시 ✅
+{
+  "common": {
+    "title": {
+      "welcome": "환영합니다"
+    },
+    "button": {
+      "save": "저장",
+      "cancel": "취소"
+    }
+  }
+}
+
+// 잘못된 예시 ❌
+{
+  "commonTitleWelcome": "환영합니다",
+  "commonButtonSave": "저장",
+  "commonButtonCancel": "취소"
+}</code></pre>
+    
+    <h2>3. 컴포넌트 사용 규칙</h2>
+    <ul>
+        <li>컴포넌트에서 i18n 사용시 setup에서 <code>useI18n</code> 훅 사용</li>
+    </ul>
+    
+    <pre><code class="language-vue">&lt;!-- 올바른 예시 ✅ --&gt;
+&lt;script setup&gt;
+import { useI18n } from '@/_setting/i18n'
+
+const { t } = useI18n()
+&lt;/script&gt;
+
+&lt;!-- 잘못된 예시 ❌ --&gt;
+&lt;script setup&gt;
+const messages = {
+  ko: { welcome: '환영합니다' }
+}
+&lt;/script&gt;</code></pre>
+    
+    <h2>4. 변수 포함 텍스트 규칙</h2>
+    <ul>
+        <li>변수가 포함된 텍스트는 중괄호({}) 구문 사용</li>
+    </ul>
+    
+    <pre><code class="language-vue">&lt;!-- 올바른 예시 ✅ --&gt;
+&lt;template&gt;
+  &lt;p&gt;{{ $t('user.greeting', { name: userName }) }}&lt;/p&gt;
+&lt;/template&gt;
+
+&lt;!-- 잘못된 예시 ❌ --&gt;
+&lt;template&gt;
+  &lt;p&gt;안녕하세요, {{ userName }}님&lt;/p&gt;
+&lt;/template&gt;</code></pre>
+    
+    <h2>5. HTML 포함 텍스트 규칙</h2>
+    <ul>
+        <li>HTML이 포함된 텍스트는 <code>v-html</code> 디렉티브 사용</li>
+        <li>XSS 위험이 있으므로 신뢰할 수 있는 콘텐츠에만 사용</li>
+    </ul>
+    
+    <pre><code class="language-vue">&lt;!-- 올바른 예시 ✅ --&gt;
+&lt;template&gt;
+  &lt;p v-html="$t('terms.agreement')"&gt;&lt;/p&gt;
+&lt;/template&gt;
+
+&lt;!-- 잘못된 예시 ❌ --&gt;
+&lt;template&gt;
+  &lt;p&gt;본 &lt;strong&gt;서비스 약관&lt;/strong&gt;에 동의합니다.&lt;/p&gt;
+&lt;/template&gt;</code></pre>
+    
+    <h2>6. 날짜/시간 형식화 규칙</h2>
+    <ul>
+        <li>날짜와 시간은 <code>$d</code> 함수 사용</li>
+    </ul>
+    
+    <pre><code class="language-vue">&lt;!-- 올바른 예시 ✅ --&gt;
+&lt;template&gt;
+  &lt;p&gt;{{ $d(new Date(), 'long') }}&lt;/p&gt;
+&lt;/template&gt;
+
+&lt;!-- 잘못된 예시 ❌ --&gt;
+&lt;template&gt;
+  &lt;p&gt;{{ new Date().toLocaleDateString() }}&lt;/p&gt;
+&lt;/template&gt;</code></pre>
+</div>
+

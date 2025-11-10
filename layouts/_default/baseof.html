@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css">
 </head>
 <body>
     <div class="layout-container">
         <aside class="sidebar">
             <div class="sidebar-header">
-                <a href="{{ .Site.BaseURL }}" class="logo-link">
+                <a href="{{ .Site.BaseURL }}" class="logo-link{{ if eq .RelPermalink "/" }} active{{ end }}">
                     <img src="{{ .Site.BaseURL }}images/logo.png" alt="{{ .Site.Title }}" class="site-logo">
                 </a>
             </div>
@@ -18,9 +19,21 @@
                 <div class="nav-group">
                     <div class="nav-group-title">Documents</div>
                     <div class="nav-group-items">
-                        <a href="{{ .Site.BaseURL }}docs/documents/" class="nav-item nav-sub-item">docs</a>
-                        <a href="{{ .Site.BaseURL }}docs/documents-icons/" class="nav-item nav-sub-item">icons</a>
-                        <a href="{{ .Site.BaseURL }}docs/documents-styles/" class="nav-item nav-sub-item">styles</a>
+                        <a href="{{ .Site.BaseURL }}docs/documents/" class="nav-item nav-sub-item{{ if eq .RelPermalink "/docs/documents/" }} active{{ end }}">docs</a>
+                        <a href="{{ .Site.BaseURL }}docs/documents-icons/" class="nav-item nav-sub-item{{ if eq .RelPermalink "/docs/documents-icons/" }} active{{ end }}">icons</a>
+                        <a href="{{ .Site.BaseURL }}docs/documents-styles/" class="nav-item nav-sub-item{{ if eq .RelPermalink "/docs/documents-styles/" }} active{{ end }}">styles</a>
+                        <a href="{{ .Site.BaseURL }}docs/documents-convention/" class="nav-item nav-sub-item{{ if eq .RelPermalink "/docs/documents-convention/" }} active{{ end }}">convention</a>
+                        <a href="{{ .Site.BaseURL }}docs/documents-components/" class="nav-item nav-sub-item{{ if eq .RelPermalink "/docs/documents-components/" }} active{{ end }}">components</a>
+                        <a href="{{ .Site.BaseURL }}docs/documents-i18n/" class="nav-item nav-sub-item{{ if eq .RelPermalink "/docs/documents-i18n/" }} active{{ end }}">i18n</a>
+                    </div>
+                </div>
+                <div class="nav-group">
+                    <div class="nav-group-title">Posts</div>
+                    <div class="nav-group-items">
+                        <a href="{{ .Site.BaseURL }}posts/" class="nav-item nav-sub-item{{ if eq .RelPermalink "/posts/" }} active{{ end }}">전체 보기</a>
+                        <a href="{{ .Site.BaseURL }}posts/first-post/" class="nav-item nav-sub-item{{ if or (eq .RelPermalink "/posts/first-post/") (eq .RelPermalink "/posts/first-post") }} active{{ end }}">첫 번째 블로그 포스트</a>
+                        <a href="{{ .Site.BaseURL }}posts/getting-started/" class="nav-item nav-sub-item{{ if or (eq .RelPermalink "/posts/getting-started/") (eq .RelPermalink "/posts/getting-started") }} active{{ end }}">Hugo 시작하기</a>
+                        <a href="{{ .Site.BaseURL }}posts/hugo-tips/" class="nav-item nav-sub-item{{ if or (eq .RelPermalink "/posts/hugo-tips/") (eq .RelPermalink "/posts/hugo-tips") }} active{{ end }}">Hugo 사용 팁</a>
                     </div>
                 </div>
             </nav>

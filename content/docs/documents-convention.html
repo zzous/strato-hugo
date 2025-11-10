@@ -1,0 +1,124 @@
+---
+title: "Convention"
+date: 2024-11-10
+draft: false
+description: 파일, 폴더, 코드 컨벤션
+---
+
+<div class="documents-page">
+    <h1>파일, 폴더, 코드 Convention</h1>
+    
+    <h2>파일, 규칙</h2>
+    
+    <h3>1. 폴더 명 규칙</h3>
+    <ul>
+        <li>폴더 명은 kebab-case로 작성한다.</li>
+        <li><strong>Store</strong>
+            <ul>
+                <li>폴더 추가 시 모듈 기준으로 이름을 작성한다.
+                    <ul>
+                        <li>통합 포탈 모듈 -> portal</li>
+                        <li>데브옵스 모듈 -> devops</li>
+                        <li>컨테이너 모듈 -> comp</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h3>2. 파일 명 규칙</h3>
+    <ul>
+        <li>파일 명은 camelCase로 작성하고 Vue 컴포넌트는 대문자, 그 외 파일은 소문자로 시작한다.</li>
+        <li>Vue 파일들은 어떤 용도인지 이름 끝에 붙일 것. 예를 들어 컴포넌트는 꼭 파일 명 끝에 Component, 뷰는 파일 명 끝에 View를 붙일 것.</li>
+        <li><strong>Store</strong>
+            <ul>
+                <li>컨트롤러 단위로 store를 나누되 파일 명 기준은 API의 URI를 참고하고 단수형으로 작성한다.</li>
+                <li>예: <code>/api/v1/devops/projects</code> -> <code>/stores/devops/project.js</code></li>
+                <li>예: <code>/api/v2/portal/users</code> -> <code>/stores/portal/user.js</code></li>
+            </ul>
+        </li>
+        <li>v-dialog나 s-modal로 감싸져있으면 파일 명에 Modal로 표시</li>
+    </ul>
+    
+    <h2>코드 규칙</h2>
+    
+    <h3>1. 공통(JS, CSS)</h3>
+    <ul>
+        <li>파일 명은 kebab-case로 작성한다. (js, css 등 확장자를 제외한 파일명)
+            <ul>
+                <li>예: <code>user-profile.js</code>, <code>main-style.css</code></li>
+                <li>예: <code>/stores/portal/service-group.js</code></li>
+            </ul>
+        </li>
+        <li>import 시에는 확장자(.js, .css 등)를 생략할 수 있다
+            <ul>
+                <li>예: <code>import { useReplicaSetStore } from '@/stores/portal/service-group'</code></li>
+            </ul>
+        </li>
+        <li>컴포넌트 생성시 import 문은 <code>&lt;script setup&gt;</code> 요소 안에 넣고, <code>&lt;script setup&gt;</code>은 최 상단에 위치 하도록 할 것</li>
+        <li><code>components/_common</code>의 커스텀 컴포넌트는 class 명에 <code>s-</code> 접두사를 붙일 것</li>
+        <li>html 요소들의 id class 추가시 BEM 규칙을 따를 것</li>
+        <li>URL에 camelCase 금지, kebab-case 허용</li>
+        <li>Tab 인덴트는 2칸</li>
+    </ul>
+    
+    <h3>2. 함수 명 규칙</h3>
+    <ul>
+        <li>함수 명은 camelCase로 작성</li>
+        <li>함수 만들 경우 이벤트에 의해 호출되는 함수일 경우 이벤트명 추가할 것
+            <ol>
+                <li>ex) 클릭에 의한 호출일 경우 <code>onClick{{함수명}}</code></li>
+                <li>ex) keyup에 의한 호출일 경우 <code>onKeyUp{{함수명}}</code></li>
+            </ol>
+        </li>
+        <li>remove 사용 금지, delete 허용</li>
+    </ul>
+    
+    <h3>3. 변수/상수 명 규칙</h3>
+    <ul>
+        <li>변수명 목록일 경우 복수형으로 표시하고 list로 표시하지 않을 것
+            <ul>
+                <li>ex) <code>projects</code> -> O, <code>projectList</code> -> X</li>
+            </ul>
+        </li>
+        <li>API 통신을 위한 URL 상수 지정시 아래 규칙 따를 것
+            <ol>
+                <li><code>/api/v1/devops/build/{buildId}</code> -> <code>BUILD_$BUILDID</code></li>
+                <li><code>'/'</code>는 <code>'-'</code>으로 치환</li>
+                <li>path variable은 <code>$이름</code>으로 표현 <code>{buildId}</code> => <code>$BUILDID</code></li>
+                <li><code>test-name</code>과 같이 <code>'-'</code>은 붙여서 대문자 표현 -> <code>test-name</code> => <code>TESTNAME</code></li>
+            </ol>
+        </li>
+    </ul>
+    
+    <h3>4. 컴포넌트 사용 규칙</h3>
+    <ul>
+        <li>무한스크롤 사용시 꼭 가상 스크롤 (v-infinite-scroll 참고) 사용할 것</li>
+        <li>table의 경우 vuetify의 virtual tables를 이용할 것</li>
+        <li>vuetify 컴포넌트 클래스 변경시 <code>:deep(.v-slide-group__content)</code>와 같이 <code>:deep(&lt;inner-selector&gt;)</code>을 작성하여 scoped 스타일 내에 작성할 것</li>
+    </ul>
+    
+    <h3>5. 컴포넌트 작성 규칙</h3>
+    <ul>
+        <li><code>_common</code> 컴포넌트는 내부 이벤트에 대한 메서드는 부모가 가지는 형식으로 할 것</li>
+        <li><code>_common</code> 컴포넌트는 상태관련 코드 금지</li>
+    </ul>
+    
+    <h3>6. URL(Router) 경로 규칙</h3>
+    <ul>
+        <li>목록화면은 <code>/list</code>로 구성 ex) 빌드 목록 -> <code>/build/list</code>
+            <ul>
+                <li>상세, 수정, 생성 등의 화면은 팝업으로 구성되지만 예외로 페이지가 필요할 경우 (<code>/detail</code>, <code>/edit</code>, <code>/new</code>로 구성한다.)</li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h2>언어 사용 규칙</h2>
+    <ul>
+        <li>Vue 3 + pinia 사용</li>
+        <li>TypeScript는 사용하지 않으며, 순수 JavaScript로 개발</li>
+        <li>JavaScript ES6+ 문법 사용</li>
+        <li>타입 체크가 필요한 경우 JSDoc 주석 사용</li>
+    </ul>
+</div>
+
